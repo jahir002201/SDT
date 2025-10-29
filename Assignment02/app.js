@@ -7,7 +7,7 @@ const drinkCount = document.getElementById('drinkCount');
 let cart = [];
 
 const myFetchDrink = (query = 'a') => {
-
+    searchInput.value = '';
     return fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
         .then(res => res.json())
         .then(data => data.drinks);
@@ -16,7 +16,6 @@ const myFetchDrink = (query = 'a') => {
 const displayDrinks = (drinks) => {
 
     drinkContainer.innerHTML = '';
-
 
     if (!drinks) {
         drinkContainer.innerHTML = '<h3 class="text-center">Your searched drink is not found</h3>';
