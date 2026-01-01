@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Tasks{% endblock title %}
+{% block task %}
+<div class="bg-white rounded-xl shadow-sm">
+    <div class="grid grid-cols-4 p-4 border-b border-gray-100 text-sm text-gray-500">
+      <div>TASK TITLE</div>
+      <div>PRIORITY</div>
+      <div>TEAM</div>
+      <div>CREATED AT</div>
+    </div>
+    {% comment %} Task Items {% endcomment %}
+    <div class="grid grid-cols-4 p-4 border-b border-gray-100 text-sm text-gray-500">
+    {% for task in tasks %}
+      <div>{{ task.title }}</div>
+      <div>{{ task.details.priority }}</div>
+      <div>{% for user in task.assigned_to.all %}{{ user.username }} {% endfor %}</div>
+      <div>{{ task.created_at }}</div>
+    {% endfor %}
+    </div>
+  </div>
+
+{% endblock task %}
